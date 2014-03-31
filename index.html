@@ -26,6 +26,11 @@
         $('.tweets div').remove();
       }
 
+      var refreshTweets = function() {
+        clearTweets();
+        displayTweets();
+      }
+
       displayTweets();
     });
 
