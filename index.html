@@ -24,12 +24,15 @@
 
 
       // Main Functions
-      var displayTweets = function() {
-        var index = streams.home.length - 1;
+      var displayTweets = function(user) {
+        var tweets = (user === undefined) ? streams.home : streams.users[user];
+        var index = tweets.length - 1;
         while(index >= 0){
-          var tweet = streams.home[index];
+          var tweet = tweets[index];
           var $tweet = $('<div class="tweet"></div>');
-          var $author = $('<span class="author"></span>').text('@' + tweet.user);
+          var $author = $('<span class="author"></span>').attr("data-name", tweet.user).text('@' + tweet.user).on('click', function() {
+            refreshTweets($(this).attr("data-name"));
+          });
           var $msg = $('<span class="msg"></span>').text(tweet.message);
           var $time = $('<time></time>', {
             attr: {'datetime': tweet.created_at},
@@ -44,14 +47,14 @@
         $('.tweets div').remove();
       }
 
-      var refreshTweets = function() {
+      var refreshTweets = function(user) {
         clearTweets();
-        displayTweets();
+        displayTweets(user);
       }
 
 
       // Event Handlers
-      $refreshButton.on('click', refreshTweets);
+      $refreshButton.on('click', function() { refreshTweets(); });
 
 
       // Initialize Display
