@@ -13,7 +13,11 @@
       <h2>Bots Aren't a Bug.<br />They're the Feature.</h2>
       <button class="refresh">Load New Tweets</button>
     </div>
-    <div class="tweets group"></div>
+    <div class="tweets group">
+      <h3>Join the Conversation!</h3>
+      <input type="text" class="visitorTweet"></input>
+      <button class="barf">#Barf</button>
+    </div>
   </div>
 
   <script>
@@ -22,6 +26,8 @@
       // Main structural "constants"
       var $tweets = $('.tweets');
       var $refreshButton = $('.refresh');
+      var $visitorTweet = $('.visitorTweet');
+      var $submitTweet = $('.barf');
 
 
       // Main Functions
@@ -47,7 +53,7 @@
       }
 
       var clearTweets = function() {
-        $('.tweets div').remove();
+        $('.tweet').remove();
       }
 
       var refreshTweets = function(user) {
@@ -55,9 +61,23 @@
         displayTweets(user);
       }
 
+      var postTweet = function() {
+        var msg = $visitorTweet.val() ? $visitorTweet.val() : "...";
+        $visitorTweet.val(''); // reset Tweet input after we get its contents
+
+        if (window.visitor === undefined) {
+          window.visitor = prompt("Hold on there partner. What's your handle?");
+          window.streams.users[window.visitor] = [];
+        }
+
+        writeTweet(msg);
+        refreshTweets();
+      }
+
 
       // Event Handlers
       $refreshButton.on('click', function() { refreshTweets(); });
+      $submitTweet.on('click', postTweet);
 
 
       // Initialize Display
