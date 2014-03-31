@@ -2,6 +2,7 @@
 <html>
 <head>
   <script src="jquery.js"></script>
+  <script src="jquery.timeago.js"></script>
   <script src="data_generator.js"></script>
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
@@ -35,12 +36,14 @@
           });
           var $msg = $('<span class="msg"></span>').text(tweet.message);
           var $time = $('<time></time>', {
-            attr: {'datetime': tweet.created_at},
+            addClass: 'timeago',
+            attr: {'datetime': tweet.created_at.toISOString()},
             text: tweet.created_at});
           $tweet.append($author, ': ', $msg, '<br />', $time);
           $tweet.appendTo($tweets);
           index -= 1;
         }
+        $("time").timeago();
       }
 
       var clearTweets = function() {
