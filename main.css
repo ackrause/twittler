@@ -56,13 +56,21 @@ h2 {
 /* --- Site --- */
 .site {
 	width: 90%;
-	margin: auto;
+	margin: 3% auto;
 }
 
 /* --- Header --- */
 .header {
 	float: left;
-	width: 33%;
+	width: 30%;
+}
+h1 {
+	border-top: 5px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+h2 {
+	padding: 5px;
 }
 
 /* --- Tweets --- */
@@ -70,6 +78,7 @@ h2 {
 	float: left;
 	width: 67%;
 	font-size: 1.6em;
+	padding-left: 3%;
 }
 
 /* --- Tweet --- */
