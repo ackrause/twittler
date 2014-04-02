@@ -38,7 +38,7 @@
         while(index >= 0){
           var tweet = tweets[index];
           var $tweet = $('<div class="tweet"></div>');
-          var $author = $('<span class="author"></span>').attr("data-name", tweet.user).text('@' + tweet.user).on('click', function() {
+          var $author = $('<a class="author" href="#"></a>').attr("data-name", tweet.user).text('@' + tweet.user).on('click', function() {
             refreshTweets($(this).attr("data-name"));
           });
           var $msg = $('<span class="msg"></span>').text(tweet.message);
