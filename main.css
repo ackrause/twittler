@@ -44,6 +44,9 @@ a:hover {
 	background: black;
 	color: white;
 }
+button {
+	font-family: 'VT323', sans-serif;
+}
 
 /* ---- Utilities ---- */
 
